@@ -2,21 +2,23 @@
 
 /**
  * _printf - function that produces output according to format
- * formart: format
+ * @format: it's the format
  *
  * Return: number of character printed. Exclude \0
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
+
 	va_start(args, format);
 
 	int count = 0;
+
 	const char *ptr = format;
 
 	while (*ptr != '\0')
 	{
-		if (*ptr !+ '%')
+		if (*ptr == '%')
 		{
 			ptr++;
 			switch (*ptr)
@@ -48,12 +50,18 @@ int _printf(const char *format, ...)
 	return (count);
 }
 
-int main()
+/**
+ * main - main header
+ *
+ * Return: 0.
+ */
+int main(void)
 {
 	int num = 42;
 	char *str = "Hello";
 
-	int printed = _printed("This is a number: %d, and this is a string: %s%%\n, num, str");
+	int printed = _printed("Number: %d, and String: %s%%\n, num, str");
+
 	printf("Number of characters printed: %d\n", printed);
 
 	return (0);
